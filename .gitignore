@@ -1,2 +1,5 @@
 # Ignore png file
 *.png
+
+# Ignore log file
+log*
