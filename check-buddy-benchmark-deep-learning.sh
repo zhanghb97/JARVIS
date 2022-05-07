@@ -4,6 +4,10 @@
 # Run and check the deep learning benchamrk in buddy-benchmark.
 #-------------------------------------------------------------------------------
 
+# Initialize sync status variable.
+
+BUDDY_COMPILER_SYNC_STATUS=1
+
 # Prepare the log.txt
 log_dir=/root/JARVIS/log
 
@@ -27,6 +31,7 @@ checkDeepLearningBenchmark(){
     if [ $? -ne 0 ]
     then
         echo -e "[buddy-benchmark] Deep Learning Case: ${1} \e[31mError\e[0m"
+        BUDDY_COMPILER_SYNC_STATUS=0
     else
         echo -e "[buddy-benchmark] Deep Learning Case: ${1} \e[32mSuccessful\e[0m"
     fi
@@ -76,3 +81,9 @@ checkDeepLearningBenchmark mobilenet-v3-benchmark
 
 # Check resnet_v2_50-benchmark
 checkDeepLearningBenchmark resnet_v2_50-benchmark
+
+# Exit with error if any error occurs
+if [ ${BUDDY_COMPILER_SYNC_STATUS} -ne 1 ]
+then
+    exit 1
+fi

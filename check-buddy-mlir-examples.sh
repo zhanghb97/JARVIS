@@ -4,6 +4,10 @@
 # Run and check the buddy-mlir examples.
 #-------------------------------------------------------------------------------
 
+# Initialize sync status variable.
+
+BUDDY_COMPILER_SYNC_STATUS=1
+
 # Prepare the log.txt
 log_dir=/root/JARVIS/log
 
@@ -27,6 +31,7 @@ checkBudExamples(){
     if [ $? -ne 0 ]
     then
         echo -e "[buddy-mlir] Bud Dialect Example: ${1} \e[31mError\e[0m"
+        BUDDY_COMPILER_SYNC_STATUS=0
     else
         echo -e "[buddy-mlir] Bud Dialect Example: ${1} \e[32mSuccessful\e[0m"
     fi
@@ -38,6 +43,7 @@ checkMLIRExamples(){
     if [ $? -ne 0 ]
     then
         echo -e "[buddy-mlir] MLIR ${1} Example: ${2} \e[31mError\e[0m"
+        BUDDY_COMPILER_SYNC_STATUS=0
     else
         echo -e "[buddy-mlir] MLIR ${1} Example: ${2} \e[32mSuccessful\e[0m"
     fi
@@ -138,3 +144,9 @@ checkMLIRExamples Vector vector-fma-run
 
 # Check vector-long-run
 checkMLIRExamples Vector vector-long-run
+
+# Exit with error if any error occurs
+if [ ${BUDDY_COMPILER_SYNC_STATUS} -ne 1 ]
+then
+    exit 1
+fi

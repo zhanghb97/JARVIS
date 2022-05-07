@@ -23,6 +23,7 @@ make >> ${log_loc} 2>&1
 if [ $? -ne 0 ]
 then
     echo -e "[buddy-mlir] JIT benchmark \e[31mError\e[0m"
+    exit 1
 else
     echo -e "[buddy-mlir] JIT benchmark \e[32mSuccessful\e[0m"
 fi

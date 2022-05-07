@@ -4,6 +4,10 @@
 # Run and check the audio processing benchamrk in buddy-benchmark.
 #-------------------------------------------------------------------------------
 
+# Initialize sync status variable.
+
+BUDDY_COMPILER_SYNC_STATUS=1
+
 # Prepare the log.txt
 log_dir=/root/JARVIS/log
 
@@ -27,6 +31,7 @@ checkAudioProcessingBenchmark(){
     if [ $? -ne 0 ]
     then
         echo -e "[buddy-benchmark] Audio Processing Case: ${1} \e[31mError\e[0m"
+        BUDDY_COMPILER_SYNC_STATUS=0
     else
         echo -e "[buddy-benchmark] Audio Processing Case: ${1} \e[32mSuccessful\e[0m"
     fi
@@ -55,3 +60,9 @@ cd bin
 
 # Check image-processing-benchmark
 checkAudioProcessingBenchmark audio-processing-benchmark
+
+# Exit with error if any error occurs
+if [ ${BUDDY_COMPILER_SYNC_STATUS} -ne 1 ]
+then
+    exit 1
+fi

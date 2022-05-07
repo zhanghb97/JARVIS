@@ -36,6 +36,7 @@ cd bin
 if [ $? -ne 0 ]
 then
     echo -e "[buddy-mlir] DIP Dialect Corr2D Example \e[31mError\e[0m"
+    exit 1
 else
     echo -e "[buddy-mlir] DIP Dialect Corr2D Example \e[32mSuccessful\e[0m"
 fi
