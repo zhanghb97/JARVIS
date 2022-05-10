@@ -4,6 +4,11 @@
 # Run and check the convolution optimization examples in buddy-mlir.
 #-------------------------------------------------------------------------------
 
+# Initialize sync status variable.
+status_dir=/root/JARVIS/log/SyncStatus.md
+markdown_error="<font color="red">error</font>"
+markdown_succ="<font color="green">successful</font>"
+
 # Prepare the log.txt
 log_dir=/root/JARVIS/log
 
@@ -38,7 +43,11 @@ cd bin
 if [ $? -ne 0 ]
 then
     echo -e "[buddy-mlir] Convolution Optimization Example \e[31mError\e[0m"
+    echo "[buddy-mlir] Convolution Optimization Example ${1} ${markdown_error}" >> ${status_dir}
+    echo "" >> ${status_dir}
     exit 1
 else
     echo -e "[buddy-mlir] Convolution Optimization Example \e[32mSuccessful\e[0m"
+    echo "[buddy-mlir] Convolution Optimization Example ${1} ${markdown_succ}" >> ${status_dir}
+    echo "" >> ${status_dir}
 fi

@@ -7,6 +7,9 @@
 # Initialize sync status variable.
 
 BUDDY_COMPILER_SYNC_STATUS=1
+status_dir=/root/JARVIS/log/SyncStatus.md
+markdown_error="<font color="red">error</font>"
+markdown_succ="<font color="green">successful</font>"
 
 # Prepare the log.txt
 log_dir=/root/JARVIS/log
@@ -32,8 +35,12 @@ checkImageProcessingBenchmark(){
     then
         echo -e "[buddy-benchmark] Image Processing Case: ${1} \e[31mError\e[0m"
         BUDDY_COMPILER_SYNC_STATUS=0
+        echo "[buddy-benchmark] Image Processing Case: ${1} ${markdown_error}" >> ${status_dir}
+        echo "" >> ${status_dir}
     else
         echo -e "[buddy-benchmark] Image Processing Case: ${1} \e[32mSuccessful\e[0m"
+        echo "[buddy-benchmark] Image Processing Case: ${1} ${markdown_succ}" >> ${status_dir}
+        echo "" >> ${status_dir}
     fi
 }
 
