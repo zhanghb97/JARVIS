@@ -156,6 +156,15 @@ checkMLIRExamples Vector vector-fma-run
 # Check vector-long-run
 checkMLIRExamples Vector vector-long-run
 
+#-------------------------------------------------------------------------------
+# Check MLIR PDL dialect examples.
+#-------------------------------------------------------------------------------
+
+cd /root/buddy-mlir/examples/MLIRPDL
+
+# Check vector-load-run
+checkMLIRExamples PDL pdl-multiroot-lower
+
 # Exit with error if any error occurs
 if [ ${BUDDY_COMPILER_SYNC_STATUS} -ne 1 ]
 then
