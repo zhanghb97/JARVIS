@@ -22,7 +22,7 @@ rm -rf /root/JARVIS/log/*
 echo "---" > ${status_dir}
 echo "layout: default" >> ${status_dir}
 echo "title: Sync Status" >> ${status_dir}
-echo "parent: DisplayBoards" >> ${status_dir}
+echo "parent: Display Boards" >> ${status_dir}
 echo "---" >> ${status_dir}
 echo "" >> ${status_dir}
 
