@@ -30,16 +30,16 @@ echo "Log for check-buddy-benchmark-image-processing.sh at ${current_time}" > ${
 
 checkImageProcessingBenchmark(){
     echo "Checking ${1} ..." >> ${log_loc}
-    ./${1} ../../benchmarks/ImageProcessing/Images/${2}.png ${3}>> ${log_loc} 2>&1
+    ./${1} ../../benchmarks/ImageProcessing/Images/${2}.png ${3} ${4}>> ${log_loc} 2>&1
     if [ $? -ne 0 ]
     then
-        echo -e "[buddy-benchmark] Image Processing Case: ${1} \e[31mError\e[0m"
+        echo -e "[buddy-benchmark] Image Processing Case: ${1} ${4} \e[31mError\e[0m"
         BUDDY_COMPILER_SYNC_STATUS=0
-        echo "[buddy-benchmark] Image Processing Case: ${1} ${markdown_error}" >> ${status_dir}
+        echo "[buddy-benchmark] Image Processing Case: ${1} ${4} ${markdown_error}" >> ${status_dir}
         echo "" >> ${status_dir}
     else
-        echo -e "[buddy-benchmark] Image Processing Case: ${1} \e[32mSuccessful\e[0m"
-        echo "[buddy-benchmark] Image Processing Case: ${1} ${markdown_succ}" >> ${status_dir}
+        echo -e "[buddy-benchmark] Image Processing Case: ${1} ${4} \e[32mSuccessful\e[0m"
+        echo "[buddy-benchmark] Image Processing Case: ${1} ${4} ${markdown_succ}" >> ${status_dir}
         echo "" >> ${status_dir}
     fi
 }
@@ -67,7 +67,8 @@ ninja image-processing-benchmark >> ${log_loc} 2>&1
 cd bin
 
 # Check image-processing-benchmark
-checkImageProcessingBenchmark image-processing-benchmark YuTu laplacianKernelAlign
+checkImageProcessingBenchmark image-processing-benchmark YuTu laplacianKernelAlign CONSTANT_PADDING
+checkImageProcessingBenchmark image-processing-benchmark YuTu laplacianKernelAlign REPLICATE_PADDING
 
 # Exit with error if any error occurs
 if [ ${BUDDY_COMPILER_SYNC_STATUS} -ne 1 ]
