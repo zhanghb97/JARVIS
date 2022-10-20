@@ -55,8 +55,7 @@ git submodule update --remote --rebase
 # Build the latest llvm/mlir
 
 cd /root/buddy-mlir/llvm/build
-ninja
-ninja check-mlir
+ninja check-mlir check-clang
 
 # Build the buddy-mlir
 
