@@ -34,6 +34,8 @@ cmake -G Ninja .. \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DBUDDY_EXAMPLES=ON \
     -DBUDDY_DIP_OPT_STRIP_MINING=256 \
+    -DBUDDY_ENABLE_OPENCV=ON \
+    -DOpenCV_DIR=/root/opencv/build/ \
     >> ${log_loc} 2>&1
 ninja correlation2D >> ${log_loc}
 cd bin

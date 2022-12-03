@@ -36,6 +36,8 @@ cmake -G Ninja .. \
     -DBUDDY_CONV_OPT_STRIP_MINING=256 \
     -DBUDDY_OPT_ATTR=avx512f \
     -DBUDDY_OPT_TRIPLE=x86_64-unknown-linux-gnu \
+    -DBUDDY_ENABLE_OPENCV=ON \
+    -DOpenCV_DIR=/root/opencv/build/ \
     >> ${log_loc} 2>&1
 ninja edge-detection >> ${log_loc}
 cd bin

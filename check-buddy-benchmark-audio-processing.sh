@@ -56,7 +56,7 @@ cmake -G Ninja .. \
 	-DAUDIO_PROCESSING_BENCHMARKS=ON \
     -DCMAKE_CXX_COMPILER=clang++ \
     -DKFR_DIR=/root/kfr/ \
-    -DBUDDY_OPT_BUILD_DIR=/root/buddy-mlir/build/ \
+    -DBUDDY_MLIR_BUILD_DIR=/root/buddy-mlir/build/ \
     >> ${log_loc} 2>&1
 ninja audio-processing-benchmark >> ${log_loc} 2>&1
 

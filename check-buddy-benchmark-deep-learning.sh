@@ -55,7 +55,7 @@ cd build-check
 cmake -G Ninja .. \
 	-DDEEP_LEARNING_BENCHMARKS=ON \
 	-DOpenCV_DIR=/root/opencv/build \
-	-DBUDDY_OPT_BUILD_DIR=/root/buddy-mlir/build/ \
+	-DBUDDY_MLIR_BUILD_DIR=/root/buddy-mlir/build/ \
     >> ${log_loc} 2>&1
 ninja >> ${log_loc} 2>&1
 
